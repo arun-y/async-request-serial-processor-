@@ -30,7 +30,7 @@ public class PoolableWorkerThread<U> extends Thread {
 
   private static final Logger LOGGER = LoggerFactory.getLogger(PoolableWorkerThread.class);
 
-  private final PoolableWorkerThreadPool myPool;
+  private final PoolableWorkerThreadPool<U> myPool;
   private final AsyncRequestSerializerConfig asyncRequestSerializerConfig;
 
   private final BlockingQueue<FutureTask<U>> localRequestQueue = new LinkedBlockingQueue<>();
@@ -44,7 +44,7 @@ public class PoolableWorkerThread<U> extends Thread {
 
   private String currentRequestKey;
 
-  public PoolableWorkerThread(final PoolableWorkerThreadPool myPool,
+  public PoolableWorkerThread(final PoolableWorkerThreadPool<U> myPool,
                               final AsyncRequestSerializerConfig asyncRequestSerializerConfig) {
     this.myPool = myPool;
     this.asyncRequestSerializerConfig = asyncRequestSerializerConfig;
